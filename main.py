@@ -4,13 +4,6 @@ from telegram import Update
 from google.generativeai import configure, GenerativeModel
 from features.website_scanner import scan_website
 from features.fake_terminal import generate_fake_terminal_output
-
-import os
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
-from telegram import Update
-from google.generativeai import configure, GenerativeModel
-from features.website_scanner import scan_website
-from features.fake_terminal import generate_fake_terminal_output
 from features.crypto_tools import encrypt, decrypt
 from features.multi_language_converter import convert_code
 from features.web_vulnerability_scanner import scan_sql_injection
