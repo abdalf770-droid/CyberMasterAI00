@@ -72,7 +72,9 @@ elif context.user_data.get("mode") == "choose_encryption_type":
 
     
     elif "الإخفاء داخل الصور" in text:
-        await update.message.reply_text("🖼 أرسل الصورة والنص لإخفائه داخلها.")
+      context.user_data["mode"] = "steganography_mode"
+      await update.message.reply_text("📷 أرسل الصورة التي تريد إخفاء النص داخلها أو فك الإخفاء منها.")
+
     
     elif "تحليل الشبكات" in text:
         await update.message.reply_text("🌐 أرسل عنوان IP مع /24 مثل 192.168.1.1/24")
