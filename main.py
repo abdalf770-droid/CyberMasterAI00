@@ -72,7 +72,6 @@ elif context.user_data.get("mode") == "choose_encryption_type":
 
     
     elif "الإخفاء داخل الصور" in text:
-       context.user_data["mode"] = "steganography_mode"
        await update.message.reply_text("📷 أرسل الصورة لإخفاء أو استخراج النص.")
 
 
