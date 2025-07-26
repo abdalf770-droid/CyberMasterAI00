@@ -14,7 +14,7 @@ from features.number_converter import convert_number
 from features.network_utils import analyze_ip, validate_mac, network_auth_info
 from features.osint_tools import search_breach
 from features.tutorials import get_tutorial
-from features.quiz_engine import start_quiz
+from features.quiz_engine import quiz_data
 
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
