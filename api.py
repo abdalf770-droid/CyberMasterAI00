@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, request, jsonify, render_template
 from google.generativeai import configure, GenerativeModel
 import os
 
