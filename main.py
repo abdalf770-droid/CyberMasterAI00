@@ -26,6 +26,36 @@ configure(api_key=GEMINI_API_KEY)
 gemini_model = GenerativeModel('gemini-pro')
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
+# اختيار بين التشفير وفك التشفير
+if context.user_data.get("mode") == "choose_encrypt_or_decrypt":
+    if "تشفير" in text:
+        context.user_data["action"] = "encrypt"
+        context.user_data["mode"] = "choose_encryption_type"
+    elif "فك التشفير" in text:
+        context.user_data["action"] = "decrypt"
+        context.user_data["mode"] = "choose_encryption_type"
+    else:
+        await update.message.reply_text("❗️اختر من الأزرار.")
+        return
+    
+    keyboard = [
+        ["🔐 AES", "🔐 Caesar"],
+        ["🔐 Base64", "🔐 Vigenère"],
+        ["⬅️ رجوع"]
+    ]
+    await update.message.reply_text("اختر نوع التشفير/فك التشفير:", reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True))
+
+# اختيار نوع التشفير
+elif context.user_data.get("mode") == "choose_encryption_type":
+    algo = text.replace("🔐", "").strip().lower()
+    context.user_data["algorithm"] = algo
+    
+    if context.user_data["action"] == "encrypt":
+        context.user_data["mode"] = "encrypt_input"
+        await update.message.reply_text(f"✍️ أرسل النص لتشفيره باستخدام {algo.upper()}")
+    else:
+        context.user_data["mode"] = "decrypt_input"
+        await update.message.reply_text(f"✍️ أرسل النص لفك تشفيره باستخدام {algo.upper()}")
 
     if "تشفير وفك التشفير" in text:
         await update.message.reply_text("🔐 أرسل النص لتشفيره أو لفك التشفير.")
