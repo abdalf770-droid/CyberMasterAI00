@@ -60,8 +60,8 @@ elif context.user_data.get("mode") == "choose_encryption_type":
     if "تشفير وفك التشفير" in text:
         await update.message.reply_text("🔐 أرسل النص لتشفيره أو لفك التشفير.")
     elif "🔐 التشفير وفك التشفير" in text:
-    context.user_data.clear()
-    context.user_data["mode"] = "choose_encrypt_or_decrypt"
+      context.user_data.clear()
+      context.user_data["mode"] = "choose_encrypt_or_decrypt"
     
     keyboard = [
         ["🔒 تشفير", "🔓 فك التشفير"],
