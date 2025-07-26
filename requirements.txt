@@ -1,5 +1,5 @@
+requests
+whois
 flask
 gunicorn
-google-generativeai
-python-telegram-bot==20.3
-requests
+python-telegram-bot
