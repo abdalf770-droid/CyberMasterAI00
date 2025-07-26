@@ -3,3 +3,5 @@ whois
 flask
 gunicorn
 python-telegram-bot
+google-generativeai
+
