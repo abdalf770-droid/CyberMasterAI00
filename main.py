@@ -68,11 +68,9 @@ elif context.user_data.get("mode") == "choose_encryption_type":
         ["⬅️ رجوع"]
     ]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
-    await update.message.reply_text("اختر العملية التي تريد تنفيذها:", reply_markup=reply_markup)
+    await update.message.reply_text("اختر العملية التي تريد تنفيذها:")
 
     
-    elif "الإخفاء داخل الصور" in text:
-       await update.message.reply_text("📷 أرسل الصورة لإخفاء أو استخراج النص.")
 
 
     
