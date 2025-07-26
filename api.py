@@ -1,8 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory, render_template
 from google.generativeai import configure, GenerativeModel
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", template_folder="templates")
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 configure(api_key=GEMINI_API_KEY)
@@ -21,8 +21,12 @@ def ask():
         return jsonify({"error": str(e)}), 500
 
 @app.route('/')
-def home():
-    return "CyberMasterAI API is running."
+def index():
+    return render_template("index.html")
+
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
