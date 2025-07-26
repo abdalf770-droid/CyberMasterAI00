@@ -34,9 +34,10 @@ async def scan(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def hack(update: Update, context: ContextTypes.DEFAULT_TYPE):
     terminal_output = generate_fake_terminal_output()
-    await update.message.reply_text(f"💻 Fake Terminal Output:
+    await update.message.reply_text(f"""💻 Fake Terminal Output:
 
-{terminal_output}")
+{terminal_output}""")
+
 
 def main():
     print("🚀 CyberMaster AI is starting...")
