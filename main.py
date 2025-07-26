@@ -9,7 +9,7 @@ from features.multi_language_converter import convert_code
 from features.web_vulnerability_scanner import scan_sql_injection
 from features.google_dorker import generate_google_dorks
 from features.ascii_converter import text_to_ascii, ascii_to_text
-from features.code_converter import convert_code_syntax
+from features.code_converter import convert_syntax
 from features.number_converter import convert_number
 from features.network_utils import analyze_ip, subnet_mask
 from features.osint_tools import analyze_ip_address
