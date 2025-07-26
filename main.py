@@ -1,4 +1,5 @@
 import os
+from telegram.ext import MessageHandler, filters
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from telegram import Update
 from google.generativeai import configure, GenerativeModel
@@ -23,6 +24,36 @@ OWNER_ID = int(os.environ.get("OWNER_ID", "0"))
 
 configure(api_key=GEMINI_API_KEY)
 gemini_model = GenerativeModel('gemini-pro')
+async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = update.message.text
+
+    if "تشفير وفك التشفير" in text:
+        await update.message.reply_text("🔐 أرسل النص لتشفيره أو لفك التشفير.")
+    
+    elif "الإخفاء داخل الصور" in text:
+        await update.message.reply_text("🖼 أرسل الصورة والنص لإخفائه داخلها.")
+    
+    elif "تحليل الشبكات" in text:
+        await update.message.reply_text("🌐 أرسل عنوان IP مع /24 مثل 192.168.1.1/24")
+    
+    elif "تحويل أنظمة العد" in text:
+        await update.message.reply_text("📊 أرسل الرقم وسيتم تحويله بين (ثنائي - عشري - سداسي).")
+    
+    elif "تحويل الأكواد" in text:
+        await update.message.reply_text("💻 أرسل الكود + اللغة التي تريد التحويل منها وإليها.")
+    
+    elif "اختبار الأمن السيبراني" in text:
+        await update.message.reply_text("🧠 سيتم الآن بدء اختبار الأمن السيبراني...")
+
+    elif "OSINT" in text:
+        await update.message.reply_text("🔍 أرسل اسم المستخدم أو الإيميل لفحصه.")
+
+    elif "شروحات الأمن" in text:
+        await update.message.reply_text("📚 سيتم عرض الشروحات المتوفرة...")
+
+    else:
+        await update.message.reply_text("❗️الأمر غير معروف. اختر من الأزرار.")
+
 
 async def ask(update: Update, context: ContextTypes.DEFAULT_TYPE):
     prompt = " ".join(context.args)
@@ -71,7 +102,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=main_keyboard
     )
 
-
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
 app = ApplicationBuilder().token(BOT_TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("ask", ask))
