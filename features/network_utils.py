@@ -2,7 +2,7 @@
 
 import ipaddress
 
-def subnet_info(ip_with_prefix: str) -> str:
+def analyze_ip(ip_with_prefix: str) -> str:
     try:
         network = ipaddress.ip_network(ip_with_prefix, strict=False)
         return (
