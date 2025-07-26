@@ -72,11 +72,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 app = ApplicationBuilder().token(BOT_TOKEN).build()
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("ask", ask))
-    app.add_handler(CommandHandler("scan", scan))
-    app.add_handler(CommandHandler("hack", hack))
-    app.run_polling()
+app.add_handler(CommandHandler("start", start))
+app.add_handler(CommandHandler("ask", ask))
+app.add_handler(CommandHandler("scan", scan))
+app.add_handler(CommandHandler("hack", hack))
+app.run_polling()
+
 
 if __name__ == "__main__":
     main()
