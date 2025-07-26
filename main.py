@@ -29,8 +29,8 @@ async def scan(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     domain = context.args[0]
     result = scan_website(domain)
-    await update.message.reply_text(f"نتيجة الفحص:
-{result}")
+await update.message.reply_text(f"نتيجة الفحص:\n{scan_result}")
+
 
 async def hack(update: Update, context: ContextTypes.DEFAULT_TYPE):
     terminal_output = generate_fake_terminal_output()
