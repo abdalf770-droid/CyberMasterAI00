@@ -1,8 +1,10 @@
-from flask import Flask, request, jsonify, send_from_directory, render_template
+from flask import Flask, render_template
 from google.generativeai import configure, GenerativeModel
 import os
 
-app = Flask(__name__, static_folder="static", template_folder="templates")
+app = Flask(__name__)
+
+
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 configure(api_key=GEMINI_API_KEY)
