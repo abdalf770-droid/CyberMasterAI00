@@ -12,7 +12,7 @@ from features.ascii_converter import text_to_ascii, ascii_to_text
 from features.code_converter import convert_code_syntax
 from features.number_converter import convert_number
 from features.network_utils import analyze_ip, validate_mac, network_auth_info
-from features.osint_tools import analyze_ip_address
+from features.osint_tools import search_breach
 from features.tutorials import get_tutorial
 from features.quiz_engine import start_quiz
 
