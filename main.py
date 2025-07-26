@@ -29,6 +29,17 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if "تشفير وفك التشفير" in text:
         await update.message.reply_text("🔐 أرسل النص لتشفيره أو لفك التشفير.")
+    elif "🔐 التشفير وفك التشفير" in text:
+    context.user_data.clear()
+    context.user_data["mode"] = "choose_encrypt_or_decrypt"
+    
+    keyboard = [
+        ["🔒 تشفير", "🔓 فك التشفير"],
+        ["⬅️ رجوع"]
+    ]
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
+    await update.message.reply_text("اختر العملية التي تريد تنفيذها:", reply_markup=reply_markup)
+
     
     elif "الإخفاء داخل الصور" in text:
         await update.message.reply_text("🖼 أرسل الصورة والنص لإخفائه داخلها.")
