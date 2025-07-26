@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>CyberMaster AI - واجهة الفخامة</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
 </head>
 <body>
     <div class="header">
@@ -21,6 +23,6 @@
         <p>⚡ Developed by <b>Eng. AbdelFattah Al-Sheikh</b> | <a href="https://t.me/f_f_f_p" target="_blank">@f_f_f_p</a></p>
     </div>
 
-    <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
